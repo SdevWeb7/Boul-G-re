@@ -7,7 +7,7 @@ type MainProps = PropsWithChildren<{
 }>
 export default function Main({children, className}: MainProps) {
 
-    return <main className={cn('bg-primary-light', className)}>
+    return <main className={cn('bg-primary-light flex-1', className)}>
         {children}
     </main>
 }

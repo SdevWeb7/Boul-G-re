@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "GBP",
-  description: "Gère ta boulangerie patisserie",
+  title: "Boul'Gère",
+  description: "Gère ta boulangerie patisserie simplement",
 };
 
 export default function RootLayout({

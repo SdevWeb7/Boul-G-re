@@ -10,6 +10,3 @@ Lora – un bon mélange entre modernité et élégance classique, avec un côt�
 Amatic SC – très artisanale, elle a un style manuscrit léger, mais reste suffisamment professionnelle si elle est utilisée avec parcimonie, comme pour les titres.
 Quicksand – une police sans serif aux courbes arrondies, légère et moderne, qui apporte une touche amicale et artisanale.
 Merriweather – une serif polyvalente qui peut donner un aspect à la fois sérieux et chaleureux, idéale pour une application professionnelle mais accueillante.
-
-
-test
