@@ -5,48 +5,98 @@ import H1 from "@/components/h1";
 import {useState, useTransition} from "react";
 import {logOut} from "@/actions/auth-actions";
 import {motion} from "framer-motion";
-import {ArrowRight, Croissant} from "lucide-react";
+import {ArrowRight, Calendar, Croissant, FileText, Table} from "lucide-react";
+import {ExitIcon, RulerHorizontalIcon} from "@radix-ui/react-icons";
+import {usePathname} from "next/navigation";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isPending, startTransition] = useTransition();
+    const pathname = usePathname();
 
     return <motion.header
-                    animate={{width: !isMenuOpen ? "6rem" : "15rem"}}
-                    className={`flex flex-col justify-between items-center bg-beige rounded-r-xl p-4`}>
+                    animate={{width: !isMenuOpen ? "4rem" : "12rem"}}
+                    className={`bg-beige flex flex-col justify-between sticky top-0 h-screen rounded-r-xl p-4`}>
+
+
+        <nav className={"flex flex-col mt-8"}>
+            <Link href={'/app'}
+                  className={`flex gap-2 w-full mb-16 rounded-xl px-1 py-2 ${pathname === "/app" ? "bg-white" : ""}`}>
+
+                <Croissant
+                    className={`min-h-7 min-w-7`}/>
+
+                {isMenuOpen && <H1 className={"p-header whitespace-nowrap font-bold text-xl"}>Boul&apos;Gère</H1>}
+            </Link>
 
 
 
-        {/*<nav className={"flex flex-col justify-between"}>*/}
-        {/*    <Link href="/" className={'flex items-center gap-2 mb-10 mt-6'}>*/}
-        {/*        <Croissant className={'min-w-5 min-h-5 max-h-5 max-w-5'}/>*/}
-        {/*        {isMenuOpen && <H1 className={"text-2xl font-semibold"}>Boul&apos;Gère</H1>}*/}
-        {/*    </Link>*/}
+            <Link href={'/app/estimations'}
+                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/estimations" ? "bg-white" : ""}`}>
+
+                <RulerHorizontalIcon
+                    className={`min-h-6 min-w-6`}/>
+
+                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Estimations</p>}
+            </Link>
 
 
-        {/*    {isMenuOpen && <div className={'flex flex-col'}>*/}
-        {/*        <Link href="/auth/signup">Inventaire</Link>*/}
-        {/*        <Link href="/auth/login">Recettes</Link>*/}
-        {/*        <Link href="/auth/login">Planning</Link>*/}
-        {/*        <Link*/}
-        {/*            href="/"*/}
-        {/*            className={isPending ? "pointer-events-none opacity-50" : ""}*/}
-        {/*            onClick={(e) => {*/}
-        {/*                e.preventDefault();*/}
-        {/*                startTransition(async() => await logOut());*/}
-        {/*            }}>Déconnexion</Link>*/}
-        {/*    </div>}*/}
+            <Link href={'/app/recettes'}
+                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/recettes" ? "bg-white" : ""}`}>
 
-        {/*</nav>*/}
+                <Table
+                    className={`min-h-6 min-w-6`}/>
+
+                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Recettes</p>}
+            </Link>
 
 
-        <motion.button
-                    className={"flex items-center gap-2"}
-                    onClick={() => setIsMenuOpen(v => !v)}>
-            <ArrowRight className={'test2'} />
+            <Link href={'/app/inventaire'}
+                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/inventaire" ? "bg-white" : ""}`}>
 
-            {isMenuOpen && <p className={'test'}>Fermer le menu</p>}
-        </motion.button>
+                <FileText
+                    className={`min-h-6 min-w-6`}/>
+
+                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Inventaire</p>}
+            </Link>
+
+
+
+            <Link href={'/app/plannings'}
+                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/plannings" ? "bg-white" : ""}`}>
+
+                <Calendar
+                    className={`min-h-6 min-w-6`}/>
+
+                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Plannings</p>}
+            </Link>
+
+
+
+            <Link href={'/'}
+                  className={`font-bold flex gap-2 w-full mt-12 ${isPending ? "pointer-events-none opacity-50" : ""}`}
+                  onClick={(e) => {
+                      e.preventDefault();
+                      startTransition(async () => await logOut());
+                  }}>
+
+                <ExitIcon
+                    className={`min-h-6 min-w-6`}/>
+
+                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Déconnexion</p>}
+            </Link>
+
+        </nav>
+
+        <button
+            className={`flex gap-2 w-full`}
+            onClick={() => setIsMenuOpen(v => !v)}>
+
+            <ArrowRight
+                className={`min-h-6 min-w-6 transition ${isMenuOpen ? " rotate-180" : ""}`}/>
+
+            {isMenuOpen && <p className={"p-header font-bold whitespace-nowrap"}>Fermer le menu</p>}
+        </button>
 
 
     </motion.header>

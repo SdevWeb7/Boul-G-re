@@ -75,26 +75,15 @@
 
 /******** MON CSS ***********/
 
-.test {
-      width: 0px;
+.p-header {
       opacity: 0;
-      animation: test .2s forwards;
+      animation: .1s apparition .3s linear forwards;
 }
-.test2:hover {
-      transform: rotate(180deg);
-}
-
-@keyframes test {
-      0% {
-            width: 0px;
+@keyframes apparition {
+      from {
             opacity: 0;
       }
-      90% {
-            width: auto;
-            opacity: 0;
-      }
-      100% {
-            width: auto;
+      to {
             opacity: 1;
       }
 }
