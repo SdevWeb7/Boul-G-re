@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+      font-family: "Merriweather";
+      src: url("./fonts/MerriweatherSans-VariableFont_wght.ttf") format("truetype");
+}
+@font-face {
+      font-family: "bakery";
+      src: url("./fonts/bakery.ttf") format("truetype");
+}
 /******** Shadcn-ui ***********/
 @layer base {
   :root {
@@ -74,7 +82,12 @@
 
 
 /******** MON CSS ***********/
-
+* {
+  font-family: "Merriweather", sans-serif;
+}
+header h1 {
+      font-family: "bakery", sans-serif;
+}
 .p-header {
       opacity: 0;
       animation: .1s apparition .3s linear forwards;

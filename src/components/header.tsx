@@ -15,47 +15,47 @@ export default function Header() {
     const pathname = usePathname();
 
     return <motion.header
-                    animate={{width: !isMenuOpen ? "4rem" : "12rem"}}
+                    animate={{width: !isMenuOpen ? "4.5rem" : "15rem"}}
                     className={`bg-beige flex flex-col justify-between sticky top-0 h-screen rounded-r-xl p-4`}>
 
 
         <nav className={"flex flex-col mt-8"}>
             <Link href={'/app'}
-                  className={`flex gap-2 w-full mb-16 rounded-xl px-1 py-2 ${pathname === "/app" ? "bg-white" : ""}`}>
+                  className={`flex items-center gap-2 w-full mb-16 rounded-xl px-1 py-2 ${pathname === "/app" ? "bg-white" : ""}`}>
 
                 <Croissant
-                    className={`min-h-7 min-w-7`}/>
+                    className={`min-h-8 min-w-8 my-1`}/>
 
-                {isMenuOpen && <H1 className={"p-header whitespace-nowrap font-bold text-xl"}>Boul&apos;Gère</H1>}
+                {isMenuOpen && <H1 className={"p-header whitespace-nowrap font-bold text-3xl tracking-wider"}>Boulanger Pro</H1>}
             </Link>
 
 
 
             <Link href={'/app/estimations'}
-                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/estimations" ? "bg-white" : ""}`}>
+                  className={`flex items-center gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/estimations" ? "bg-white" : ""}`}>
 
                 <RulerHorizontalIcon
-                    className={`min-h-6 min-w-6`}/>
+                    className={`min-h-6 min-w-6 mx-2`}/>
 
-                {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Estimations</p>}
+                {isMenuOpen && <p className={"p-header whitespace-nowrap text-"}>Estimations</p>}
             </Link>
 
 
             <Link href={'/app/recettes'}
-                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/recettes" ? "bg-white" : ""}`}>
+                  className={`flex items-center gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/recettes" ? "bg-white" : ""}`}>
 
                 <Table
-                    className={`min-h-6 min-w-6`}/>
+                    className={`min-h-6 min-w-6 mx-2`}/>
 
                 {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Recettes</p>}
             </Link>
 
 
             <Link href={'/app/inventaire'}
-                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/inventaire" ? "bg-white" : ""}`}>
+                  className={`flex items-center gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/inventaire" ? "bg-white" : ""}`}>
 
                 <FileText
-                    className={`min-h-6 min-w-6`}/>
+                    className={`min-h-6 min-w-6 mx-2`}/>
 
                 {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Inventaire</p>}
             </Link>
@@ -63,10 +63,10 @@ export default function Header() {
 
 
             <Link href={'/app/plannings'}
-                  className={`flex gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/plannings" ? "bg-white" : ""}`}>
+                  className={`flex items-center gap-2 w-full mb-4 font-bold rounded-xl px-1 py-2 ${pathname === "/app/plannings" ? "bg-white" : ""}`}>
 
                 <Calendar
-                    className={`min-h-6 min-w-6`}/>
+                    className={`min-h-6 min-w-6 mx-2`}/>
 
                 {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Plannings</p>}
             </Link>
@@ -81,7 +81,7 @@ export default function Header() {
                   }}>
 
                 <ExitIcon
-                    className={`min-h-6 min-w-6`}/>
+                    className={`min-h-6 min-w-6 mx-2`}/>
 
                 {isMenuOpen && <p className={"p-header whitespace-nowrap"}>Déconnexion</p>}
             </Link>
@@ -93,9 +93,9 @@ export default function Header() {
             onClick={() => setIsMenuOpen(v => !v)}>
 
             <ArrowRight
-                className={`min-h-6 min-w-6 transition ${isMenuOpen ? " rotate-180" : ""}`}/>
+                className={`min-h-6 min-w-6 mx-2 transition ${isMenuOpen ? " rotate-180" : ""}`}/>
 
-            {isMenuOpen && <p className={"p-header font-bold whitespace-nowrap"}>Fermer le menu</p>}
+            {isMenuOpen && <p className={"p-header font-bold whitespace-nowrap"}>Diminuer</p>}
         </button>
 
 
