@@ -67,6 +67,9 @@ const config: Config = {
 		fontFamily: {
 		  	"bakery": ["Bakery", "sans-serif"],
 			"merriweather": ["Merriweather", "sans-serif"],
+			"bodoniXT": ["bodoniXT", "sans-serif"],
+			"peace": ["peace", "sans-serif"],
+			"fabada": ["fabada", "sans-serif"],
 		},
 		screens: {
 			  "max450": {max: "450px"},

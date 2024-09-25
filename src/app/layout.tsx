@@ -1,22 +1,11 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.css";
 import {Toaster} from "@/components/ui/toaster";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Boulanger Pro",
-  description: "Gestion de boulangerie patisserie",
+  description: "Gestionnaire de boulangerie patisserie professionnel",
 };
 
 export default function RootLayout({
@@ -26,11 +15,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen overflow-x-hidden`}>
+      <body className={`font-fabada antialiased flex min-h-screen overflow-x-hidden`}>
 
         {children}
 
         <Toaster />
+
 
       </body>
     </html>

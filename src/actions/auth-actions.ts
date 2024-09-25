@@ -10,14 +10,14 @@ import {AuthError} from "next-auth";
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
-export async function logIn(prevState: unknown, formData: unknown) {
+export async function logIn(prevState: unknown, formData: unknown, successMessage = "") {
     if (!(formData instanceof FormData)) return { message: "Données invalides" };
 
     try {
         await signIn("credentials", {
             email: formData.get("email") as string,
             password: formData.get("password") as string,
-            redirectTo: "/app",
+            redirectTo: `/app?${successMessage ? "successSignUp=true" : "successSignIn=true"}`,
         });
     } catch (error) {
         if (error instanceof AuthError) {
@@ -60,11 +60,7 @@ export async function signUp(prevState: unknown, formData: unknown) {
         return { message: "Il y a eu un problème dans la création du compte." };
     }
 
-    await signIn("credentials", {
-        email,
-        password,
-        redirectTo: "/?successSignUp=true",
-    });
+    await logIn(prevState, formData, "Vous êtes bien inscrit.");
 }
 
 export async function logOut() {

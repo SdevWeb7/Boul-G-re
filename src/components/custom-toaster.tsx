@@ -11,24 +11,29 @@ export default function CustomToaster({searchParams}: CustomToasterProps) {
     const { toast } = useToast();
 
     useEffect(() => {
-        if (searchParams.successPaiement) {
+        if (searchParams.successSignIn) {
             toast({
-                description:
-                    "Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours.",
+                description: "Vous êtes connecté(e)",
             });
         } else if (searchParams.successSignUp) {
             toast({
-                description: "Vous êtes bien inscrit.",
+                description: "Vous êtes inscrit(e)",
             });
         } else if (searchParams.successLogout) {
             toast({
-                description: "Vous êtes bien déconnecté.",
+                description: "Vous êtes déconnecté(e)",
+            });
+        } else if (searchParams.successPaiement) {
+            toast({
+                description: "Paiement effectué avec succès",
             });
         }
-        searchParams.successPaiement = undefined;
-        searchParams.successLogout = undefined;
+        searchParams.successSignIn = undefined;
         searchParams.successSignUp = undefined;
+        searchParams.successLogout = undefined;
+        searchParams.successPaiement = undefined;
     }, [
+        searchParams.successSignIn,
         searchParams.successSignUp,
         searchParams.successLogout,
         searchParams.successPaiement,
