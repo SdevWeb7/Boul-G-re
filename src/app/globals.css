@@ -68,12 +68,8 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
+      * { @apply border-border; }
+      body { @apply bg-background text-foreground; }
 }
 
 
@@ -82,21 +78,14 @@
 
 
 /******** MON CSS ***********/
-* {
-  font-family: "Merriweather", sans-serif;
-}
-header h1 {
-      font-family: "bakery", sans-serif;
+.bg-home {
+      clip-path: ellipse(70% 50% at 50% 100%);
 }
 .p-header {
       opacity: 0;
       animation: .1s apparition .3s linear forwards;
 }
 @keyframes apparition {
-      from {
-            opacity: 0;
-      }
-      to {
-            opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
 }

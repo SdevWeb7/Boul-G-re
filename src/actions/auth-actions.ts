@@ -17,7 +17,7 @@ export async function logIn(prevState: unknown, formData: unknown) {
         await signIn("credentials", {
             email: formData.get("email") as string,
             password: formData.get("password") as string,
-            redirectTo: "/?successLogin=true",
+            redirectTo: "/app",
         });
     } catch (error) {
         if (error instanceof AuthError) {
@@ -86,8 +86,8 @@ export async function createCheckoutSession() {
             },
         ],
         mode: "payment",
-        success_url: `${process.env.CANONICAL_URL}/paiement?success=true`,
-        cancel_url: `${process.env.CANONICAL_URL}/paiement?cancelled=true`,
+        success_url: `${process.env.NEXTAUTH_URL}/paiement?success=true`,
+        cancel_url: `${process.env.NEXTAUTH_URL}/paiement?cancelled=true`,
     });
 
     // redirect user

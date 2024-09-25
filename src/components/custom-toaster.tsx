@@ -16,10 +16,6 @@ export default function CustomToaster({searchParams}: CustomToasterProps) {
                 description:
                     "Paiement effectué avec succès. Vous pouvez maintenant accéder à tous nos cours.",
             });
-        } else if (searchParams.successLogin) {
-            toast({
-                description: "Vous êtes bien connecté.",
-            });
         } else if (searchParams.successSignUp) {
             toast({
                 description: "Vous êtes bien inscrit.",
@@ -30,12 +26,10 @@ export default function CustomToaster({searchParams}: CustomToasterProps) {
             });
         }
         searchParams.successPaiement = undefined;
-        searchParams.successLogin = undefined;
         searchParams.successLogout = undefined;
         searchParams.successSignUp = undefined;
     }, [
         searchParams.successSignUp,
-        searchParams.successLogin,
         searchParams.successLogout,
         searchParams.successPaiement,
     ]);

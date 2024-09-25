@@ -15,13 +15,19 @@ export default function Page({searchParams} : {searchParams: { [key: string]: st
                 description: "Veuillez vous connecter pour accéder à cette page."
             });
         }
+        if (searchParams.passwordReset) {
+            toast({
+                description: "Votre mot de passe a bien été réinitialisé."
+            });
+        }
         searchParams.mustConnect = undefined;
-    }, [searchParams.mustConnect, searchParams]);
+        searchParams.passwordReset = undefined;
+    }, [searchParams.mustConnect, searchParams.passwordReset]);
 
 
     return <Main>
 
-        <H1 className={'mb-20'}>Connexion</H1>
+        <H1 className={'mb-20 mt-10 text-center text-6xl'}>Connexion</H1>
 
         <AuthForm formType="logIn"/>
 

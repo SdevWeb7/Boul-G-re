@@ -8,5 +8,5 @@ export default function ResetPasswordBtn() {
                 type={'submit'}
                 variant={'default'}
                 disabled={pending}
-                className={'w-full mt-8 py-6'}>Recevoir un email de réinitialisation</Button>
+                className={'w-full mt-8 py-6 whitespace-normal'}>Recevoir un email de réinitialisation</Button>
 }

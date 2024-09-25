@@ -8,5 +8,5 @@ export default function ChangePasswordBtn() {
                 type={'submit'}
                 variant={'default'}
                 disabled={pending}
-                className={'w-full mt-8 py-6'}>Changer le mot de passe</Button>
+                className={'w-full mt-8 py-6 whitespace-normal'}>Changer le mot de passe</Button>
 }

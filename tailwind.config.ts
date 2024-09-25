@@ -63,7 +63,14 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		fontFamily: {
+		  	"bakery": ["Bakery", "sans-serif"],
+			"merriweather": ["Merriweather", "sans-serif"],
+		},
+		screens: {
+			  "max450": {max: "450px"},
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

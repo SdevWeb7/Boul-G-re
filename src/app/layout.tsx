@@ -15,8 +15,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Boul'Gère",
-  description: "Gère ta boulangerie patisserie simplement",
+  title: "Boulanger Pro",
+  description: "Gestion de boulangerie patisserie",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen overflow-x-hidden`}>
 
         {children}
 

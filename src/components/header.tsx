@@ -15,8 +15,8 @@ export default function Header() {
     const pathname = usePathname();
 
     return <motion.header
-                    animate={{width: !isMenuOpen ? "4.5rem" : "15rem"}}
-                    className={`bg-beige flex flex-col justify-between sticky top-0 h-screen rounded-r-xl p-4`}>
+                    animate={{width: !isMenuOpen ? "4rem" : "16.5rem"}}
+                    className={`min-w-[${!isMenuOpen ? 4 : 16.5}rem] bg-beige flex flex-col justify-between sticky top-0 h-screen rounded-r-xl p-2`}>
 
 
         <nav className={"flex flex-col mt-8"}>
@@ -24,9 +24,9 @@ export default function Header() {
                   className={`flex items-center gap-2 w-full mb-16 rounded-xl px-1 py-2 ${pathname === "/app" ? "bg-white" : ""}`}>
 
                 <Croissant
-                    className={`min-h-8 min-w-8 my-1`}/>
+                    className={`min-h-8 min-w-8 my-1 mx-1`}/>
 
-                {isMenuOpen && <H1 className={"p-header whitespace-nowrap font-bold text-3xl tracking-wider"}>Boulanger Pro</H1>}
+                {isMenuOpen && <H1 className={"p-header font-bakery whitespace-nowrap font-bold text-4xl tracking-wider"}>Boulanger Pro</H1>}
             </Link>
 
 
@@ -89,7 +89,7 @@ export default function Header() {
         </nav>
 
         <button
-            className={`flex gap-2 w-full`}
+            className={`flex gap-2 w-full mb-4`}
             onClick={() => setIsMenuOpen(v => !v)}>
 
             <ArrowRight

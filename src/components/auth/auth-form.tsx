@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import AuthFormBtn from "./auth-form-btn";
 import { useFormState } from "react-dom";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
+import {Card, CardContent, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import Link from "next/link";
 
 type AuthFormProps = {
@@ -17,12 +17,11 @@ export default function AuthForm({ formType }: AuthFormProps) {
     const [logInError, dispatchLogIn] = useFormState(logIn, undefined);
 
     return (
-        <Card className="w-full min750:max-w-[600px] mx-auto pt-8 min750:px-16 space-y-3">
+        <Card className="max-w-[450px] mx-auto pt-2 space-y-3">
             <CardHeader>
                 <CardTitle>Veuillez entrer vos identifiants</CardTitle>
-                <CardDescription>{formType === "logIn" ? "Connectez-vous" : 'Inscrivez vous'} afin de profiter des cours React et Next.js</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className={'pb-0'}>
                 <form action={formType === "logIn" ? dispatchLogIn : dispatchSignUp}>
                     <div className="space-y-1">
                         <Label htmlFor="email">Adresse e-mail</Label>
@@ -52,6 +51,7 @@ export default function AuthForm({ formType }: AuthFormProps) {
                     )}
                 </form>
             </CardContent>
+
             <CardFooter className="flex justify-between">
 
                 {formType === "logIn" ? (
