@@ -1,16 +1,16 @@
 "use client";
 
 import Main from "@/components/main";
-import H1 from "@/components/h1";
 import {useToast} from "@/hooks/use-toast";
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {resetPassword} from "@/actions/reset-password-actions";
-import ChangePasswordBtn from "@/components/auth/change-password-btn";
 import {useRouter} from "next/navigation";
-import Link from "next/link";
-import {buttonVariants} from "@/components/ui/button";
+import H1Auth from "@/components/auth/h1-auth";
+import MyCard from "@/components/my-card";
+import ResetPasswordBtn from "@/components/auth/reset-password-btn";
+import BackToRootBtn from "@/components/back-to-root-btn";
 
 
 export default function Page({searchParams}: {searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -36,12 +36,13 @@ export default function Page({searchParams}: {searchParams: { [key: string]: str
 
     return <Main>
 
-        <H1 className={'mb-20 mt-10 text-center text-6xl max450:text-5xl'}>Changement du mot de passe</H1>
+        <H1Auth>Nouveau mot de passe</H1Auth>
 
 
-        <Card className={'max-w-[450px] mx-auto pt-2'}>
+        <MyCard className={'pt-2'}>
             <CardHeader>
-                <h2>Veuillez choisir un nouveau mot de passe et le confirmer</h2>
+                <CardTitle
+                    className={'text-xl font-medium'}>Choisissez un nouveau mot de passe</CardTitle>
             </CardHeader>
             <CardContent>
                 <form action={handleSubmit}>
@@ -53,22 +54,20 @@ export default function Page({searchParams}: {searchParams: { [key: string]: str
                         name="password" />
 
 
-                    <Label htmlFor="passwordConfirmation">Confirmer mot de passe</Label>
+                    <Label htmlFor="passwordConfirmation">Confirmation mot de passe</Label>
                     <Input
                         type="password"
                         id="passwordConfirmation"
                         name="passwordConfirmation" />
 
-                    <ChangePasswordBtn />
+                    <ResetPasswordBtn mode={'reset'} />
                 </form>
             </CardContent>
-        </Card>
+        </MyCard>
 
 
-        <Link className={buttonVariants({
-            variant: 'default',
-            className: 'ml-4 mt-16 mx-auto'
-        })} href={'/'}>Retour à l&apos;accueil</Link>
+
+        <BackToRootBtn />
 
     </Main>
 }

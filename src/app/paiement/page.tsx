@@ -1,6 +1,6 @@
 "use client";
 
-import H1 from "@/components/h1";
+import H1 from "@/components/app/h1";
 import {Button} from "@/components/ui/button";
 import {createCheckoutSession} from "@/actions/auth-actions";
 import {useEffect, useState, useTransition} from "react";

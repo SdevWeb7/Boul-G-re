@@ -2,9 +2,10 @@
 
 import Main from "@/components/main";
 import AuthForm from "@/components/auth/auth-form";
-import H1 from "@/components/h1";
 import {useToast} from "@/hooks/use-toast";
 import {useEffect} from "react";
+import H1Auth from "@/components/auth/h1-auth";
+import BackToRootBtn from "@/components/back-to-root-btn";
 
 export default function Page({searchParams} : {searchParams: { [key: string]: string | string[] | undefined } }) {
     const { toast } = useToast();
@@ -27,10 +28,12 @@ export default function Page({searchParams} : {searchParams: { [key: string]: st
 
     return <Main>
 
-        <H1 className={'mb-20 mt-10 text-center text-6xl'}>Connexion</H1>
+        <H1Auth className={''}>Connexion</H1Auth>
 
         <AuthForm formType="logIn"/>
 
 
+
+        <BackToRootBtn />
     </Main>
 }

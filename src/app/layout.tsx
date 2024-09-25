@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`font-fabada antialiased flex min-h-screen overflow-x-hidden`}>
+      <body className={`font-merriweather antialiased flex min-h-screen overflow-x-hidden`}>
 
         {children}
 

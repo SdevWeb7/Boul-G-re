@@ -1,15 +1,15 @@
 "use client";
 
 import Main from "@/components/main";
-import H1 from "@/components/h1";
 import {useToast} from "@/hooks/use-toast";
-import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Label} from "@/components/ui/label";
 import {Input} from "@/components/ui/input";
 import {requestResetPassword} from "@/actions/reset-password-actions";
 import ResetPasswordBtn from "@/components/auth/reset-password-btn";
-import Link from "next/link";
-import {buttonVariants} from "@/components/ui/button";
+import MyCard from "@/components/my-card";
+import H1Auth from "@/components/auth/h1-auth";
+import BackToRootBtn from "@/components/back-to-root-btn";
 
 export default function Page() {
     const { toast } = useToast();
@@ -24,41 +24,38 @@ export default function Page() {
         }
         const {error} = await requestResetPassword(email as string);
 
-        if (error) {
-            toast({description: error});
-            return;
-        } else {
-            toast({description: 'Un email de réinitialisation vous a été envoyé'});
-        }
+        if (error) toast({description: error});
+        else toast({description: 'Un email de réinitialisation vous a été envoyé'});
     }
 
     return <Main>
 
-        <H1 className={'mb-20 mt-10 text-center text-6xl max450:text-5xl'}>Réinitialisation du mot de passe</H1>
+        <H1Auth>Mot de passe oublié</H1Auth>
 
 
-        <Card className={'max-w-[450px] mx-auto pt-2'}>
+        <MyCard>
             <CardHeader>
-                <h2>Veuillez entrer votre adresse email afin de recevoir un email de réinitialisation de votre mot de passe</h2>
+                <CardTitle
+                    className={'text-xl font-medium'}>Entrer votre adresse email afin de recevoir un email de réinitialisation</CardTitle>
             </CardHeader>
+
             <CardContent>
                 <form action={handleSubmit}>
-                    <Label htmlFor="email">Email</Label>
+                    <Label
+                        className={'text-base font-thin'}
+                        htmlFor="email">Email</Label>
                     <Input
                         type="email"
                         id="email"
                         name="email" />
 
                     <ResetPasswordBtn />
-
                 </form>
             </CardContent>
-        </Card>
+        </MyCard>
 
-        <Link className={buttonVariants({
-            variant: 'default',
-            className: 'ml-4 mt-16 mx-auto'
-        })} href={'/'}>Retour à l&apos;accueil</Link>
+
+        <BackToRootBtn />
 
 
     </Main>

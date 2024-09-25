@@ -66,13 +66,22 @@ const config: Config = {
   		},
 		fontFamily: {
 		  	"bakery": ["Bakery", "sans-serif"],
-			"merriweather": ["Merriweather", "sans-serif"],
+			"merriweather": ["merriweather", "sans-serif"],
 			"bodoniXT": ["bodoniXT", "sans-serif"],
 			"peace": ["peace", "sans-serif"],
 			"fabada": ["fabada", "sans-serif"],
 		},
 		screens: {
 			  "max450": {max: "450px"},
+		},
+		keyframes: {
+			  "apparition": {
+				  from: { opacity: "0" },
+				  to: { opacity: "1" },
+			  }
+		},
+		animation: {
+			  "apparition-link-header": ".1s apparition .3s linear forwards",
 		}
   	}
   },

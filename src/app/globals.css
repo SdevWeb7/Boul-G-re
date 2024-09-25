@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @font-face {
-      font-family: "Merriweather";
+      font-family: "merriweather";
       src: url("./fonts/MerriweatherSans-VariableFont_wght.ttf") format("truetype");
 }
 @font-face {
@@ -92,11 +92,3 @@
 
 /******** MON CSS ***********/
 .bg-home { clip-path: ellipse(70% 50% at 50% 100%); }
-.p-header {
-      opacity: 0;
-      animation: .1s apparition .3s linear forwards;
-}
-@keyframes apparition {
-      from { opacity: 0; }
-      to { opacity: 1; }
-}

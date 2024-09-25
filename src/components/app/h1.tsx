@@ -7,7 +7,7 @@ type H1Props = PropsWithChildren<{
 }>
 export default function H1({children, className} : H1Props) {
 
-    return <h1 className={cn('', className)}>
+    return <h1 className={cn('text-center mt-8 text-4xl font-bold font-bodoniXT tracking-wider', className)}>
 
         {children}
 

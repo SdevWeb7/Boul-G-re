@@ -1,4 +1,4 @@
-import H1 from "@/components/h1";
+import H1 from "@/components/app/h1";
 import Main from "@/components/main";
 import Link from "next/link";
 import {buttonVariants} from "@/components/ui/button";
