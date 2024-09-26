@@ -1,4 +1,5 @@
 import { User } from "next-auth";
+import {Bakery} from "@prisma/client";
 
 type nullableString = string | null;
 
@@ -10,6 +11,7 @@ declare module "next-auth" {
         firstname: nullableString;
         lastname: nullableString;
         avatarImgSrc: nullableString;
+        bakery?: Bakery | null;
     }
 
     interface Session {
@@ -28,5 +30,6 @@ declare module "@auth/core/jwt" {
         firstname: nullableString;
         lastname: nullableString;
         avatarImgSrc: nullableString;
+        bakery: Bakery;
     }
 }

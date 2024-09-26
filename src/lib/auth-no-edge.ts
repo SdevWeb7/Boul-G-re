@@ -15,7 +15,8 @@ const authConfig = {
 
                 const { email, password } = validatedAuthData.data;
                 const user = await prisma.user.findUnique({
-                    where: { email: email }
+                    where: { email: email },
+                    include: { bakery:  true }
                 });
                 if (!user) return null;
 

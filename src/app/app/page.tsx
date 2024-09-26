@@ -2,11 +2,14 @@ import H1 from "@/components/app/h1";
 import CustomToaster from "@/components/custom-toaster";
 import MyCard from "@/components/my-card";
 import ContainerCard from "@/components/app/container-card";
+import {auth} from "@/lib/auth-no-edge";
 
 type AppHomeProps = {
     searchParams: { [key: string]: string | string[] | undefined };
 }
-export default function AppHome({searchParams}: AppHomeProps) {
+export default async function AppHome({searchParams}: AppHomeProps) {
+
+    const session = await auth();
 
     return <>
         <CustomToaster searchParams={searchParams}/>

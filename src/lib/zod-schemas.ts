@@ -2,11 +2,18 @@ import {z} from "zod";
 
 
 export const authSchema = z.object({
-    email: z.string().trim().email().max(100, 'Email must be at most 100 characters'),
-    password: z.string().trim().min(8, 'Password must be at least 8 characters').max(100, 'Password must be at most 100 characters')
+    email: z.string().trim().email().max(50, 'Veuillez entrer une adresse email valide').min(5, 'Veuillez entrer une adresse email valide'),
+    password: z.string().trim().min(8, 'Le mot de passe doit faire minimum 8 caractères').max(35, 'Le mot de passe ne doit pas dépasser 35 caractères')
 });
 
-export type TAuthForm = z.infer<typeof authSchema>;
+export const signUpSchema = z.object({
+    email: z.string().trim().email('Email invalide').max(50, 'Veuillez entrer une adresse email valide').min(5, 'Veuillez entrer une adresse email valide'),
+    password: z.string().trim().min(8, 'Le mot de passe doit faire minimum 8 caractères').max(35, 'Le mot de passe ne doit pas dépasser 35 caractères'),
+    bakeryName: z.string().trim().min(3, "Le nom de la boulangerie doit avoir au moins 3 caractères").max(40, 'Le nom de la boulangerie ne doit pas dépasser 40 caractères')
+});
+
+export type TLoginForm = z.infer<typeof authSchema>;
+export type TSignupForm = z.infer<typeof signUpSchema>;
 
 
 

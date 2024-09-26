@@ -1,22 +1,23 @@
 "use server";
 
 import {auth, signIn, signOut} from "@/lib/auth-no-edge";
-import {authSchema} from "@/lib/zod-schemas";
 import bcrypt from "bcryptjs";
 import prisma from "@/lib/db";
 import {redirect} from "next/navigation";
 import {AuthError} from "next-auth";
+import {authSchema, signUpSchema} from "@/lib/zod-schemas";
 
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 
-export async function logIn(prevState: unknown, formData: unknown, successMessage = "") {
-    if (!(formData instanceof FormData)) return { message: "Données invalides" };
+export async function logIn(data: unknown, successMessage = "") {
+    const validatedFormData = authSchema.safeParse(data);
+    if (!validatedFormData.success) return { message: "Erreur serveur." };
 
     try {
         await signIn("credentials", {
-            email: formData.get("email") as string,
-            password: formData.get("password") as string,
+            email: validatedFormData.data.email,
+            password: validatedFormData.data.password,
             redirectTo: `/app?${successMessage ? "successSignUp=true" : "successSignIn=true"}`,
         });
     } catch (error) {
@@ -38,21 +39,22 @@ export async function logIn(prevState: unknown, formData: unknown, successMessag
     }
 }
 
-export async function signUp(prevState: unknown, formData: unknown) {
-    if (!(formData instanceof FormData)) return { message: "Données invalides" };
-
-    const formDataEntries = Object.fromEntries(formData.entries());
-
-    const validatedFormData = authSchema.safeParse(formDataEntries);
+export async function signUp(data: unknown) {
+    const validatedFormData = signUpSchema.safeParse(data);
     if (!validatedFormData.success) return { message: "Erreur serveur." };
 
-    const { email, password } = validatedFormData.data;
+    const { email, password, bakeryName } = validatedFormData.data;
     const hashedPassword = await bcrypt.hash(password, 10);
     try {
         await prisma.user.create({
             data: {
                 email,
                 hashedPassword,
+                bakery: {
+                    create: {
+                        name: bakeryName,
+                    },
+                }
             },
         });
     } catch (error) {
@@ -60,7 +62,7 @@ export async function signUp(prevState: unknown, formData: unknown) {
         return { message: "Il y a eu un problème dans la création du compte." };
     }
 
-    await logIn(prevState, formData, "Vous êtes bien inscrit.");
+    await logIn(validatedFormData.data, "Vous êtes bien inscrit.");
 }
 
 export async function logOut() {

@@ -25,12 +25,14 @@ model User {
   resetPasswordToken       String?   @unique
   resetPasswordTokenExpiry DateTime?
   createdAt                DateTime  @default(now())
-  bakery                   Bakery?
+  bakery                   Bakery?   @relation("UserBakery", fields: [bakeryId], references: [id])
+  bakeryId                 String?   @unique
 }
 
 model Bakery {
   id            String        @id @default(cuid())
-  ownedByUser   User          @relation(fields: [ownedByUserId], references: [id])
+  name          String
+  ownedByUser   User?         @relation("UserBakery")
   ownedByUserId String        @unique
   recettes      Recette[]
   inventory     Inventory?
@@ -62,6 +64,7 @@ model Product {
   name        String
   description String?
   unit        String
+  price       Float
   recettes    RecetteOnProduct[]
   inventory   ProductOnInventory[]
 }
