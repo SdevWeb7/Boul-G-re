@@ -95,7 +95,7 @@ export default function Header() {
 
         <LinkHeader
             href={'/'}
-            label={'Fermer le menu'}
+            label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
             isMenuOpen={isMenuOpen}
             icon={<ArrowRight className={`min-h-7 min-w-7 mx-2 transition ${isMenuOpen ? " rotate-180" : ""}`}/>}
             className={cn("mb-4", {

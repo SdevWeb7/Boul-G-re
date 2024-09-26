@@ -25,4 +25,75 @@ model User {
   resetPasswordToken       String?   @unique
   resetPasswordTokenExpiry DateTime?
   createdAt                DateTime  @default(now())
+  bakery                   Bakery?
+}
+
+model Bakery {
+  id            String        @id @default(cuid())
+  ownedByUser   User          @relation(fields: [ownedByUserId], references: [id])
+  ownedByUserId String        @unique
+  recettes      Recette[]
+  inventory     Inventory?
+  StaffMember   StaffMember[]
+}
+
+model Recette {
+  id           String             @id @default(cuid())
+  title        String
+  description  String?
+  instructions String
+  image        String?
+  bakery       Bakery             @relation(fields: [bakeryId], references: [id])
+  bakeryId     String
+  products     RecetteOnProduct[]
+}
+
+model RecetteOnProduct {
+  id           String  @id @default(cuid())
+  ingredient   Product @relation(fields: [ingredientId], references: [id])
+  ingredientId String
+  recette      Recette @relation(fields: [recetteId], references: [id])
+  recetteId    String
+  quantity     Float
+}
+
+model Product {
+  id          String               @id @default(cuid())
+  name        String
+  description String?
+  unit        String
+  recettes    RecetteOnProduct[]
+  inventory   ProductOnInventory[]
+}
+
+model ProductOnInventory {
+  id          String    @id @default(cuid())
+  product     Product   @relation(fields: [productId], references: [id])
+  productId   String
+  inventory   Inventory @relation(fields: [inventoryId], references: [id])
+  inventoryId String
+}
+
+model Inventory {
+  id       String               @id @default(cuid())
+  products ProductOnInventory[]
+  bakery   Bakery               @relation(fields: [bakeryId], references: [id])
+  bakeryId String               @unique
+}
+
+model StaffMember {
+  id         String       @id @default(cuid())
+  name       String
+  bakery     Bakery       @relation(fields: [bakeryId], references: [id])
+  bakeryId   String
+  role       String
+  createdAt  DateTime     @default(now())
+  daysAtWork DaysAtWork[]
+}
+
+model DaysAtWork {
+  id              String      @id @default(cuid())
+  day             DateTime
+  ofStaffMember   StaffMember @relation(fields: [ofStaffMemberId], references: [id])
+  ofStaffMemberId String
 }
